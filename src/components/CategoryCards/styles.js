@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const StyledCategoryProgressCard = styled.div`
   padding: 1rem;
-  max-width: 10rem;
+  max-width: 12rem;
+  min-width: 8rem;
   background-color: var(--n10);
   border-radius: 1rem;
   box-shadow: 1px 1px 1px 1px var(--n40);
