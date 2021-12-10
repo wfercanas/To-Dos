@@ -5,13 +5,6 @@ const StyledNavbar = styled.nav`
   justify-content: space-between;
 `;
 
-const StyledOptions = styled.ul`
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 1rem;
-`;
-
 const StyledIcon = styled.i`
   cursor: pointer;
   transition: color 500ms ease-out;
@@ -23,4 +16,4 @@ const StyledIcon = styled.i`
   }
 `;
 
-export { StyledNavbar, StyledIcon, StyledOptions };
+export { StyledNavbar, StyledIcon };
