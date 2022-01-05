@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledAddTaskButton = styled.div`
-  position: absolute;
+  position: fixed;
   right: 1rem;
   bottom: 1rem;
   width: 2.5rem;
