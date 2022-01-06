@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { StyledHome, StyledTasksContainer } from "./styles";
 
@@ -13,14 +13,17 @@ import { state } from "../../mocks/state.mock";
 import { AddTaskButton } from "../../components/Buttons";
 
 const Home = () => {
-  const { categories, tasks } = state;
+  const [searchValue, setSearchValue] = useState("");
+  const [tasks, setTasks] = useState(state.tasks);
+  const [categories, setCategories] = useState(state.categories);
+
   return (
     <StyledHome>
       <Navbar />
       <Greeting name="Fernando" />
       <CategoriesCarousel categories={categories} tasks={tasks} />
       <SectionTitle title="Tasks" />
-      <Search />
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <StyledTasksContainer>
         {tasks.map((task) => (
           <TaskCard key={task.id} text={task.text} completed={task.completed} />
