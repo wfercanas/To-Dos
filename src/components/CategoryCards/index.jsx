@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
 import {
   StyledCategoryProgressCard,
   StyledTasksCounter,
   StyledCategoryName,
   StyledProgressBar,
-} from './styles';
+} from "./styles";
 
 function CategoryProgressCard({ category, tasks }) {
   function calcProgress(tasks) {
     const completed =
       tasks.filter((task) => task.completed === true).length * 100;
-    console.log(Math.round(completed / tasks.length));
     return Math.round(completed / tasks.length);
   }
 
