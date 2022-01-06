@@ -27,6 +27,11 @@ const Home = () => {
     setTasks(newState);
   };
 
+  const deleteTask = (id) => {
+    let newState = tasks.filter((task) => task.id !== id);
+    setTasks(newState);
+  };
+
   return (
     <StyledHome>
       <Navbar />
@@ -42,6 +47,7 @@ const Home = () => {
             text={task.text}
             completed={task.completed}
             handleComplete={handleComplete}
+            deleteTask={deleteTask}
           />
         ))}
       </StyledTasksContainer>
