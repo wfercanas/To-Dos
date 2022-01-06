@@ -17,6 +17,16 @@ const Home = () => {
   const [tasks, setTasks] = useState(state.tasks);
   const [categories, setCategories] = useState(state.categories);
 
+  const filteredTasks = (task) =>
+    task.text.toLowerCase().includes(searchValue.toLowerCase());
+
+  const handleComplete = (id) => {
+    const newState = [...tasks];
+    const taskIndex = newState.findIndex((task) => task.id === id);
+    newState[taskIndex].completed = !newState[taskIndex].completed;
+    setTasks(newState);
+  };
+
   return (
     <StyledHome>
       <Navbar />
@@ -25,8 +35,14 @@ const Home = () => {
       <SectionTitle title="Tasks" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <StyledTasksContainer>
-        {tasks.map((task) => (
-          <TaskCard key={task.id} text={task.text} completed={task.completed} />
+        {tasks.filter(filteredTasks).map((task) => (
+          <TaskCard
+            key={task.id}
+            id={task.id}
+            text={task.text}
+            completed={task.completed}
+            handleComplete={handleComplete}
+          />
         ))}
       </StyledTasksContainer>
       <AddTaskButton />
