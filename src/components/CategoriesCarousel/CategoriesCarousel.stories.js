@@ -1,34 +1,38 @@
-import React from 'react';
-import { CategoriesCarousel } from '.';
+import React from "react";
+import { CategoriesCarousel } from ".";
 
 export default {
-  title: 'Categories Carousel',
+  title: "Categories Carousel",
   component: CategoriesCarousel,
 };
 
 export const Primary = () => (
   <CategoriesCarousel
-    categories={['Business', 'Personal', 'University']}
+    categories={["Hobby", "Personal", "University"]}
     tasks={[
       {
-        text: 'Cortar cebolla',
+        id: 1,
+        text: "Cortar cebolla",
         completed: true,
-        category: 'Personal',
+        category: "Personal",
       },
       {
-        text: 'Comprar leche',
+        id: 2,
+        text: "Comprar leche",
         completed: false,
-        category: 'Personal',
+        category: "Personal",
       },
       {
-        text: 'Tomar curso de intro a React',
+        id: 3,
+        text: "Tomar curso de intro a React",
         completed: false,
-        category: 'University',
+        category: "University",
       },
       {
-        text: 'Llorar con la llorona',
+        id: 4,
+        text: "Llorar con la llorona",
         completed: false,
-        category: 'Business',
+        category: "Business",
       },
     ]}
   />

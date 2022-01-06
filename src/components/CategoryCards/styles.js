@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledCategoryProgressCard = styled.div`
   padding: 1rem;
@@ -6,7 +6,9 @@ const StyledCategoryProgressCard = styled.div`
   min-width: 8rem;
   background-color: var(--n10);
   border-radius: 1rem;
-  box-shadow: 1px 1px 1px 1px var(--n40);
+  border: 1px solid var(--n40);
+  box-shadow: 2px 2px 4px 1px var(--n40);
+  cursor: grab;
 `;
 
 const StyledTasksCounter = styled.p`
@@ -28,7 +30,7 @@ const StyledProgressBar = styled.div`
   background-color: var(--n40);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 4px;
     width: ${(props) => `${props.percentage}%`};

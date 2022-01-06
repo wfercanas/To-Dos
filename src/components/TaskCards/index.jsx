@@ -1,15 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import { StyledTaskCard, StyledCheck, StyledTaskTitle } from './styles';
+import {
+  StyledTaskCard,
+  StyledTaskDescription,
+  StyledCheck,
+  StyledTaskTitle,
+  StyledDelete,
+} from "./styles";
 
-function TaskCard({ text, completed }) {
+function TaskCard({ id, text, completed, handleComplete, deleteTask }) {
   return (
     <StyledTaskCard>
-      <StyledCheck
-        className={completed ? 'ci-checkbox_square' : 'ci-checkbox'}
-        completed={completed}
-      />
-      <StyledTaskTitle completed={completed}>{text}</StyledTaskTitle>
+      <StyledTaskDescription>
+        <StyledCheck
+          className={completed ? "ci-checkbox_square" : "ci-checkbox"}
+          completed={completed}
+          onClick={() => handleComplete(id)}
+        />
+        <StyledTaskTitle completed={completed}>{text}</StyledTaskTitle>
+      </StyledTaskDescription>
+      <StyledDelete className="ci-trash_full" onClick={() => deleteTask(id)} />
     </StyledTaskCard>
   );
 }

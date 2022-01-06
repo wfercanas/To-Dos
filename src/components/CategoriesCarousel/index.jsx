@@ -1,15 +1,16 @@
-import React from 'react';
-import { CategoryProgressCard } from '../CategoryCards';
-import { SectionTitle } from '../Titles';
-import { StyledCategoriesCarousel, StyledCarousel } from './styles';
+import React from "react";
+import { CategoryProgressCard } from "../CategoryCards";
+import { SectionTitle } from "../Titles";
+import { StyledCategoriesCarousel, StyledCarousel } from "./styles";
 
 function CategoriesCarousel({ categories, tasks }) {
   return (
     <StyledCategoriesCarousel>
-      <SectionTitle title='Categories' />
+      <SectionTitle title="Categories" />
       <StyledCarousel>
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <CategoryProgressCard
+            key={index}
             category={category}
             tasks={tasks.filter((task) => task.category === category)}
           />

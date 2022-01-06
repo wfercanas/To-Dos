@@ -1,11 +1,19 @@
-import React from 'react';
-import { StyledSearch, StyledSearchInput, StyledIcon } from './styles';
+import React from "react";
+import { StyledSearch, StyledSearchInput, StyledIcon } from "./styles";
 
-function Search() {
+function Search({ searchValue, setSearchValue }) {
+  const handleChange = ({ target }) => {
+    setSearchValue(target.value);
+  };
+
   return (
     <StyledSearch>
-      <StyledSearchInput />
-      <StyledIcon className='ci-search' />
+      <StyledSearchInput
+        value={searchValue}
+        placeholder="Search"
+        onChange={handleChange}
+      />
+      <StyledIcon className="ci-search" />
     </StyledSearch>
   );
 }
