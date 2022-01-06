@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
 const StyledTaskCard = styled.div`
-  padding: 1rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem;
   background-color: var(--n10);
   border-radius: 1rem;
   border: 1px solid var(--n40);
   box-shadow: 1px 1px 1px 1px var(--n40);
+`;
+
+const StyledTaskDescription = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const StyledCheck = styled.i`
@@ -27,4 +33,21 @@ const StyledTaskTitle = styled.p`
   text-decoration: ${(props) => (props.completed ? "line-through" : "initial")};
 `;
 
-export { StyledTaskCard, StyledCheck, StyledTaskTitle };
+const StyledDelete = styled.i`
+  font-size: 1.2rem;
+  color: var(--n100);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--r400);
+  }
+`;
+
+export {
+  StyledTaskCard,
+  StyledTaskDescription,
+  StyledCheck,
+  StyledTaskTitle,
+  StyledDelete,
+};
