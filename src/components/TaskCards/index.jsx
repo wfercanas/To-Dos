@@ -8,7 +8,7 @@ import {
   StyledDelete,
 } from "./styles";
 
-function TaskCard({ id, text, completed, handleComplete }) {
+function TaskCard({ id, text, completed, handleComplete, deleteTask }) {
   return (
     <StyledTaskCard>
       <StyledTaskDescription>
@@ -19,7 +19,7 @@ function TaskCard({ id, text, completed, handleComplete }) {
         />
         <StyledTaskTitle completed={completed}>{text}</StyledTaskTitle>
       </StyledTaskDescription>
-      <StyledDelete className="ci-trash_full" />
+      <StyledDelete className="ci-trash_full" onClick={() => deleteTask(id)} />
     </StyledTaskCard>
   );
 }
