@@ -8,13 +8,14 @@ import {
   StyledDelete,
 } from "./styles";
 
-function TaskCard({ text, completed }) {
+function TaskCard({ id, text, completed, handleComplete }) {
   return (
     <StyledTaskCard>
       <StyledTaskDescription>
         <StyledCheck
           className={completed ? "ci-checkbox_square" : "ci-checkbox"}
           completed={completed}
+          onClick={() => handleComplete(id)}
         />
         <StyledTaskTitle completed={completed}>{text}</StyledTaskTitle>
       </StyledTaskDescription>
