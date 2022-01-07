@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 
-import { StyledHome, StyledTasksContainer } from "./styles";
-
-import { CategoriesCarousel } from "../../components/CategoriesCarousel";
-import { Greeting } from "../../components/Greeting";
-import { Navbar } from "../../components/Navbar";
-import { SectionTitle } from "../../components/Titles";
-import { Search } from "../../components/Search";
-import { TaskCard } from "../../components/TaskCards";
-
 import { state } from "../../mocks/state.mock";
-import { AddTaskButton } from "../../components/Buttons";
+import { HomeUI } from "./HomeUI";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -33,26 +24,15 @@ const Home = () => {
   };
 
   return (
-    <StyledHome>
-      <Navbar />
-      <Greeting name="Fernando" />
-      <CategoriesCarousel categories={categories} tasks={tasks} />
-      <SectionTitle title="Tasks" />
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      <StyledTasksContainer>
-        {tasks.filter(filteredTasks).map((task) => (
-          <TaskCard
-            key={task.id}
-            id={task.id}
-            text={task.text}
-            completed={task.completed}
-            handleComplete={handleComplete}
-            deleteTask={deleteTask}
-          />
-        ))}
-      </StyledTasksContainer>
-      <AddTaskButton />
-    </StyledHome>
+    <HomeUI
+      categories={categories}
+      tasks={tasks}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      filteredTasks={filteredTasks}
+      handleComplete={handleComplete}
+      deleteTask={deleteTask}
+    />
   );
 };
 
