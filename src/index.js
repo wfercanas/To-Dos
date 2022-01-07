@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Home } from "./pages/Home";
 
-import './globalStyles.css';
-import './fonts.css';
+import "./globalStyles.css";
+import "./fonts.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Home />, document.getElementById("root"));
