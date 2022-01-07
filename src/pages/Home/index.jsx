@@ -1,32 +1,52 @@
 import React, { useState } from "react";
 
-import { state } from "../../mocks/state.mock";
 import { HomeUI } from "./HomeUI";
 
+function useLocalStorage(itemName, initialValue = "") {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+}
+
 const Home = () => {
+  const [state, saveState] = useLocalStorage("STATE_v1", []);
   const [searchValue, setSearchValue] = useState("");
-  const [tasks, setTasks] = useState(state.tasks);
-  const [categories, setCategories] = useState(state.categories);
 
   const filteredTasks = (task) =>
     task.text.toLowerCase().includes(searchValue.toLowerCase());
 
   const handleComplete = (id) => {
-    const newState = [...tasks];
-    const taskIndex = newState.findIndex((task) => task.id === id);
-    newState[taskIndex].completed = !newState[taskIndex].completed;
-    setTasks(newState);
+    const stateTasks = [...state.tasks];
+    const taskIndex = stateTasks.findIndex((task) => task.id === id);
+    stateTasks[taskIndex].completed = !stateTasks[taskIndex].completed;
+    saveState({ ...state, tasks: stateTasks });
   };
 
   const deleteTask = (id) => {
-    let newState = tasks.filter((task) => task.id !== id);
-    setTasks(newState);
+    let stateTasks = state.tasks.filter((task) => task.id !== id);
+    saveState({ ...state, tasks: stateTasks });
   };
 
   return (
     <HomeUI
-      categories={categories}
-      tasks={tasks}
+      categories={state.categories}
+      tasks={state.tasks}
       searchValue={searchValue}
       setSearchValue={setSearchValue}
       filteredTasks={filteredTasks}
