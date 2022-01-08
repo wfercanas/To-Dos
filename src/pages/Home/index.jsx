@@ -1,31 +1,15 @@
 import React, { useState } from "react";
 
 import { HomeUI } from "./HomeUI";
-
-function useLocalStorage(itemName, initialValue = "") {
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
-
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
-
-  const [item, setItem] = useState(parsedItem);
-
-  const saveItem = (newItem) => {
-    const stringifiedItem = JSON.stringify(newItem);
-    localStorage.setItem(itemName, stringifiedItem);
-    setItem(newItem);
-  };
-
-  return [item, saveItem];
-}
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const Home = () => {
-  const [state, saveState] = useLocalStorage("STATE_v1", []);
+  const {
+    item: state,
+    saveItem: saveState,
+    loading,
+    error,
+  } = useLocalStorage("STATE_v1", { categories: [], tasks: [] });
   const [searchValue, setSearchValue] = useState("");
 
   const filteredTasks = (task) =>
@@ -45,6 +29,8 @@ const Home = () => {
 
   return (
     <HomeUI
+      loading={loading}
+      error={error}
       categories={state.categories}
       tasks={state.tasks}
       searchValue={searchValue}
