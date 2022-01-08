@@ -11,6 +11,8 @@ import { TaskCard } from "../../components/TaskCards";
 import { AddTaskButton } from "../../components/Buttons";
 
 const HomeUI = ({
+  loading,
+  error,
   categories,
   tasks,
   searchValue,
@@ -23,10 +25,19 @@ const HomeUI = ({
     <StyledHome>
       <Navbar />
       <Greeting name="Fernando" />
-      <CategoriesCarousel categories={categories} tasks={tasks} />
+
+      {loading ? (
+        <p>Cargando categorias...</p>
+      ) : (
+        <CategoriesCarousel categories={categories} tasks={tasks} />
+      )}
+
       <SectionTitle title="Tasks" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <StyledTasksContainer>
+        {error && <p>Hubo un error cargando las tareas..</p>}
+        {loading && <p>Cargando tareas...</p>}
+        {!loading && !tasks.length && <p>Crea tu primer tarea!</p>}
         {tasks.filter(filteredTasks).map((task) => (
           <TaskCard
             key={task.id}
