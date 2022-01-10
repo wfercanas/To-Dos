@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import { CategoryProgressCard } from "../CategoryCards";
 import { SectionTitle } from "../Titles";
 import { StyledCategoriesCarousel, StyledCarousel } from "./styles";
 
-function CategoriesCarousel({ categories, tasks }) {
+import { AppContext } from "../../context";
+
+function CategoriesCarousel() {
+  const { state, loading, error } = useContext(AppContext);
+  const categories = state.categories;
+  const tasks = state.tasks;
+
+  if (loading) {
+    return <p>Cargando categorias...</p>;
+  }
+
+  if (error) {
+    return <p>Error cargando categorías...</p>;
+  }
+
   return (
     <StyledCategoriesCarousel>
       <SectionTitle title="Categories" />
