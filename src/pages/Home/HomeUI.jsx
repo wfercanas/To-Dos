@@ -13,16 +13,8 @@ import { AddTaskButton } from "../../components/Buttons";
 import { AppContext } from "../../context";
 
 const HomeUI = () => {
-  const {
-    loading,
-    error,
-    state,
-    searchValue,
-    setSearchValue,
-    filteredTasks,
-    handleComplete,
-    deleteTask,
-  } = useContext(AppContext);
+  const { loading, error, state, filteredTasks, handleComplete, deleteTask } =
+    useContext(AppContext);
 
   const tasks = state.tasks;
 
