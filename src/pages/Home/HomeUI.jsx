@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { StyledHome, StyledTasksContainer } from "./styles";
 
@@ -10,17 +10,23 @@ import { Search } from "../../components/Search";
 import { TaskCard } from "../../components/TaskCards";
 import { AddTaskButton } from "../../components/Buttons";
 
-const HomeUI = ({
-  loading,
-  error,
-  categories,
-  tasks,
-  searchValue,
-  setSearchValue,
-  filteredTasks,
-  handleComplete,
-  deleteTask,
-}) => {
+import { AppContext } from "../../context";
+
+const HomeUI = () => {
+  const {
+    loading,
+    error,
+    state,
+    searchValue,
+    setSearchValue,
+    filteredTasks,
+    handleComplete,
+    deleteTask,
+  } = useContext(AppContext);
+
+  const tasks = state.tasks;
+  const categories = state.categories;
+
   return (
     <StyledHome>
       <Navbar />
