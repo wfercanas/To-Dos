@@ -25,19 +25,12 @@ const HomeUI = () => {
   } = useContext(AppContext);
 
   const tasks = state.tasks;
-  const categories = state.categories;
 
   return (
     <StyledHome>
       <Navbar />
       <Greeting name="Fernando" />
-
-      {loading ? (
-        <p>Cargando categorias...</p>
-      ) : (
-        <CategoriesCarousel categories={categories} tasks={tasks} />
-      )}
-
+      <CategoriesCarousel />
       <SectionTitle title="Tasks" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <StyledTasksContainer>
