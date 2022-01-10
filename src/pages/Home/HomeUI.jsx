@@ -32,7 +32,7 @@ const HomeUI = () => {
       <Greeting name="Fernando" />
       <CategoriesCarousel />
       <SectionTitle title="Tasks" />
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Search />
       <StyledTasksContainer>
         {error && <p>Hubo un error cargando las tareas..</p>}
         {loading && <p>Cargando tareas...</p>}
