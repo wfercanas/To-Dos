@@ -1,12 +1,20 @@
-import React from 'react';
-import { StyledAddTaskButton, StyledIcon } from './styles';
+import React from "react";
+import { StyledAddTaskButton, StyledIcon, StyledActionButton } from "./styles";
 
 function AddTaskButton() {
   return (
     <StyledAddTaskButton>
-      <StyledIcon className='ci-plus' />
+      <StyledIcon className="ci-plus" />
     </StyledAddTaskButton>
   );
 }
 
-export { AddTaskButton };
+function ActionButton({ label, action, handleClick }) {
+  return (
+    <StyledActionButton onClick={handleClick} action={action}>
+      {label}
+    </StyledActionButton>
+  );
+}
+
+export { AddTaskButton, ActionButton };

@@ -25,4 +25,15 @@ const StyledIcon = styled.i`
   }
 `;
 
-export { StyledAddTaskButton, StyledIcon };
+const StyledActionButton = styled.button`
+  padding: 8px 32px;
+  font-size: 16px;
+  font-family: Lato;
+  border-radius: 16px;
+  border: none;
+  background-color: ${({ action }) => (!action ? "var(--n40)" : "var(--g200)")};
+  box-shadow: 1px 1px 2px 1px var(--n200);
+  cursor: pointer;
+`;
+
+export { StyledAddTaskButton, StyledIcon, StyledActionButton };
