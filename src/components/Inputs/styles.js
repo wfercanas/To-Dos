@@ -14,6 +14,14 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input`
   border-radius: 8px;
   border: 1px solid var(--n200);
+  padding: 4px 8px;
 `;
 
-export { StyledLabeledInput, StyledLabel, StyledInput };
+const StyledSelect = styled.select`
+  background-color: var(--n20);
+  border: 1px solid var(--n200);
+  border-radius: 8px;
+  padding: 4px 8px;
+`;
+
+export { StyledLabeledInput, StyledLabel, StyledInput, StyledSelect };
