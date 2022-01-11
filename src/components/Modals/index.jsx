@@ -5,19 +5,19 @@ import { AppContext } from "../../context";
 
 import { StyledModal, StyledTitle, StyledButtonsContainer } from "./styles";
 
-import { LabeledInput } from "../Inputs";
+import { LabeledInput, LabeledSelect } from "../Inputs";
 import { ActionButton } from "../Buttons";
 import { Blanket } from "../Blankets";
 
 const Modal = () => {
-  const { setOpenModal } = useContext(AppContext);
+  const { state, setOpenModal } = useContext(AppContext);
 
   return ReactDOM.createPortal(
     <Blanket>
       <StyledModal>
         <StyledTitle>Create Task</StyledTitle>
         <LabeledInput label="Task Name" />
-        <LabeledInput label="Category" />
+        <LabeledSelect label="Category" options={state.categories} />
         <StyledButtonsContainer>
           <ActionButton
             label="Cancel"
