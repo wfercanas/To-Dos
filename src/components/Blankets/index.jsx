@@ -1,8 +1,8 @@
 import React from "react";
 import { StyledBlanket } from "./styles";
 
-const Blanket = () => {
-  return <StyledBlanket />;
+const Blanket = ({ children }) => {
+  return <StyledBlanket>{children}</StyledBlanket>;
 };
 
 export { Blanket };
