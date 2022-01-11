@@ -29,6 +29,17 @@ function AppProvider({ children }) {
     saveState({ ...state, tasks: stateTasks });
   };
 
+  const createTask = ({ newTaskName, newTaskCategory }) => {
+    const newState = { ...state };
+    newState.tasks.push({
+      id: new Date().getTime(),
+      text: newTaskName,
+      category: newTaskCategory,
+      completed: false,
+    });
+    saveState({ ...newState });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -40,6 +51,7 @@ function AppProvider({ children }) {
         filteredTasks,
         handleComplete,
         deleteTask,
+        createTask,
         openModal,
         setOpenModal,
       }}

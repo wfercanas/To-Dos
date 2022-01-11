@@ -9,9 +9,9 @@ function AddTaskButton({ handleClick }) {
   );
 }
 
-function ActionButton({ label, action, handleClick }) {
+function ActionButton({ type = "button", label, action, handleClick }) {
   return (
-    <StyledActionButton onClick={handleClick} action={action}>
+    <StyledActionButton type={type} onClick={handleClick} action={action}>
       {label}
     </StyledActionButton>
   );

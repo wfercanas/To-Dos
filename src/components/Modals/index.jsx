@@ -12,7 +12,7 @@ import { Blanket } from "../Blankets";
 const Modal = () => {
   const [newTaskName, setNewTaskName] = useState("");
   const [newTaskCategory, setNewTaskCategory] = useState("");
-  const { state, setOpenModal } = useContext(AppContext);
+  const { state, createTask, setOpenModal } = useContext(AppContext);
 
   const handleTaskNameChange = ({ target }) => {
     setNewTaskName(target.value);
@@ -22,29 +22,37 @@ const Modal = () => {
     setNewTaskCategory(target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createTask({ newTaskName, newTaskCategory });
+    setOpenModal(false);
+  };
+
   return ReactDOM.createPortal(
     <Blanket>
       <StyledModal>
         <StyledTitle>Create Task</StyledTitle>
-        <LabeledInput
-          label="Task Name"
-          value={newTaskName}
-          handleChange={handleTaskNameChange}
-        />
-        <LabeledSelect
-          label="Category"
-          options={state.categories}
-          value={newTaskCategory}
-          handleChange={handleTaskCategoryChange}
-        />
-        <StyledButtonsContainer>
-          <ActionButton
-            label="Cancel"
-            action={false}
-            handleClick={() => setOpenModal(false)}
+        <form onSubmit={handleSubmit}>
+          <LabeledInput
+            label="Task Name"
+            value={newTaskName}
+            handleChange={handleTaskNameChange}
           />
-          <ActionButton label="Save" action={true} />
-        </StyledButtonsContainer>
+          <LabeledSelect
+            label="Category"
+            options={state.categories}
+            value={newTaskCategory}
+            handleChange={handleTaskCategoryChange}
+          />
+          <StyledButtonsContainer>
+            <ActionButton
+              label="Cancel"
+              action={false}
+              handleClick={() => setOpenModal(false)}
+            />
+            <ActionButton label="Save" action={true} type="submit" />
+          </StyledButtonsContainer>
+        </form>
       </StyledModal>
     </Blanket>,
     document.getElementById("modal")
