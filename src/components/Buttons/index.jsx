@@ -1,9 +1,9 @@
 import React from "react";
 import { StyledAddTaskButton, StyledIcon, StyledActionButton } from "./styles";
 
-function AddTaskButton() {
+function AddTaskButton({ handleClick }) {
   return (
-    <StyledAddTaskButton>
+    <StyledAddTaskButton onClick={handleClick}>
       <StyledIcon className="ci-plus" />
     </StyledAddTaskButton>
   );
