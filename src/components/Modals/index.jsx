@@ -2,12 +2,7 @@ import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { AppContext } from "../../context";
-
-import { StyledModal, StyledTitle, StyledButtonsContainer } from "./styles";
-
-import { LabeledInput, LabeledSelect } from "../Inputs";
-import { ActionButton } from "../Buttons";
-import { Blanket } from "../Blankets";
+import { TaskModalUI } from "./TaskModalUI";
 
 const Modal = () => {
   const [newTaskName, setNewTaskName] = useState("");
@@ -29,32 +24,15 @@ const Modal = () => {
   };
 
   return ReactDOM.createPortal(
-    <Blanket>
-      <StyledModal>
-        <StyledTitle>Create Task</StyledTitle>
-        <form onSubmit={handleSubmit}>
-          <LabeledInput
-            label="Task Name"
-            value={newTaskName}
-            handleChange={handleTaskNameChange}
-          />
-          <LabeledSelect
-            label="Category"
-            options={state.categories}
-            value={newTaskCategory}
-            handleChange={handleTaskCategoryChange}
-          />
-          <StyledButtonsContainer>
-            <ActionButton
-              label="Cancel"
-              action={false}
-              handleClick={() => setOpenModal(false)}
-            />
-            <ActionButton label="Save" action={true} type="submit" />
-          </StyledButtonsContainer>
-        </form>
-      </StyledModal>
-    </Blanket>,
+    <TaskModalUI
+      state={state}
+      setOpenModal={setOpenModal}
+      newTaskName={newTaskName}
+      newTaskCategory={newTaskCategory}
+      handleTaskNameChange={handleTaskNameChange}
+      handleTaskCategoryChange={handleTaskCategoryChange}
+      handleSubmit={handleSubmit}
+    />,
     document.getElementById("modal")
   );
 };
