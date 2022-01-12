@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../context";
 import {
   StyledCategoryProgressCard,
   StyledTasksCounter,
@@ -25,8 +26,9 @@ function CategoryProgressCard({ category, tasks }) {
 }
 
 function CreateCategoryCard() {
+  const { setOpenCategoriesModal } = useContext(AppContext);
   return (
-    <StyledCreateCategoryCard>
+    <StyledCreateCategoryCard onClick={() => setOpenCategoriesModal(true)}>
       <StyledPlusIcon className="ci-plus_circle" />
     </StyledCreateCategoryCard>
   );
