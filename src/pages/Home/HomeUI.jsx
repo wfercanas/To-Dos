@@ -11,7 +11,7 @@ import { TaskCard } from "../../components/TaskCards";
 import { AddTaskButton } from "../../components/Buttons";
 
 import { AppContext } from "../../context";
-import { TasksModal } from "../../components/Modals";
+import { CategoriesModal, TasksModal } from "../../components/Modals";
 
 const HomeUI = () => {
   const {
@@ -23,6 +23,7 @@ const HomeUI = () => {
     deleteTask,
     openTasksModal,
     setOpenTasksModal,
+    openCategoriesModal,
   } = useContext(AppContext);
 
   const tasks = state.tasks;
@@ -51,6 +52,7 @@ const HomeUI = () => {
       </StyledTasksContainer>
       <AddTaskButton handleClick={() => setOpenTasksModal(true)} />
       {openTasksModal && <TasksModal />}
+      {openCategoriesModal && <CategoriesModal />}
     </StyledHome>
   );
 };
