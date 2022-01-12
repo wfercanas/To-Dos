@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { CategoryProgressCard } from "../CategoryCards";
+import { CategoryProgressCard, CreateCategoryCard } from "../CategoryCards";
 import { SectionTitle } from "../Titles";
 import { StyledCategoriesCarousel, StyledCarousel } from "./styles";
 
@@ -30,6 +30,7 @@ function CategoriesCarousel() {
             tasks={tasks.filter((task) => task.category === category)}
           />
         ))}
+        <CreateCategoryCard />
       </StyledCarousel>
     </StyledCategoriesCarousel>
   );
