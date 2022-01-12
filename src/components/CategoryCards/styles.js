@@ -39,9 +39,27 @@ const StyledProgressBar = styled.div`
   }
 `;
 
+const StyledCreateCategoryCard = styled(StyledCategoryProgressCard)`
+  background-color: var(--n100);
+  cursor: pointer;
+`;
+
+const StyledPlusIcon = styled.i`
+  min-height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 2.4rem;
+  color: var(--n10);
+  text-align: center;
+`;
+
 export {
   StyledCategoryProgressCard,
   StyledTasksCounter,
   StyledCategoryName,
   StyledProgressBar,
+  StyledCreateCategoryCard,
+  StyledPlusIcon,
 };

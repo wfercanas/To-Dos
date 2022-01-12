@@ -4,6 +4,8 @@ import {
   StyledTasksCounter,
   StyledCategoryName,
   StyledProgressBar,
+  StyledCreateCategoryCard,
+  StyledPlusIcon,
 } from "./styles";
 
 function CategoryProgressCard({ category, tasks }) {
@@ -22,4 +24,12 @@ function CategoryProgressCard({ category, tasks }) {
   );
 }
 
-export { CategoryProgressCard };
+function CreateCategoryCard() {
+  return (
+    <StyledCreateCategoryCard>
+      <StyledPlusIcon className="ci-plus_circle" />
+    </StyledCreateCategoryCard>
+  );
+}
+
+export { CategoryProgressCard, CreateCategoryCard };
