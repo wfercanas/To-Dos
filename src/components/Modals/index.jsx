@@ -4,10 +4,10 @@ import ReactDOM from "react-dom";
 import { AppContext } from "../../context";
 import { TaskModalUI } from "./TaskModalUI";
 
-const Modal = () => {
+const TasksModal = () => {
   const [newTaskName, setNewTaskName] = useState("");
   const [newTaskCategory, setNewTaskCategory] = useState("");
-  const { state, createTask, setOpenModal } = useContext(AppContext);
+  const { state, createTask, setOpenTasksModal } = useContext(AppContext);
 
   const handleTaskNameChange = ({ target }) => {
     setNewTaskName(target.value);
@@ -20,13 +20,13 @@ const Modal = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createTask({ newTaskName, newTaskCategory });
-    setOpenModal(false);
+    setOpenTasksModal(false);
   };
 
   return ReactDOM.createPortal(
     <TaskModalUI
       state={state}
-      setOpenModal={setOpenModal}
+      setOpenModal={setOpenTasksModal}
       newTaskName={newTaskName}
       newTaskCategory={newTaskCategory}
       handleTaskNameChange={handleTaskNameChange}
@@ -37,4 +37,4 @@ const Modal = () => {
   );
 };
 
-export { Modal };
+export { TasksModal };

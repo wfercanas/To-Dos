@@ -12,7 +12,7 @@ function AppProvider({ children }) {
   } = useLocalStorage("STATE_v1", { categories: [], tasks: [] });
 
   const [searchValue, setSearchValue] = useState("");
-  const [openModal, setOpenModal] = useState(false);
+  const [openTasksModal, setOpenTasksModal] = useState(false);
 
   const filteredTasks = (task) =>
     task.text.toLowerCase().includes(searchValue.toLowerCase());
@@ -52,8 +52,8 @@ function AppProvider({ children }) {
         handleComplete,
         deleteTask,
         createTask,
-        openModal,
-        setOpenModal,
+        openTasksModal,
+        setOpenTasksModal,
       }}
     >
       {children}
