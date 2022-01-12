@@ -13,6 +13,7 @@ function AppProvider({ children }) {
 
   const [searchValue, setSearchValue] = useState("");
   const [openTasksModal, setOpenTasksModal] = useState(false);
+  const [openCategoriesModal, setOpenCategoriesModal] = useState(false);
 
   const filteredTasks = (task) =>
     task.text.toLowerCase().includes(searchValue.toLowerCase());
@@ -40,6 +41,12 @@ function AppProvider({ children }) {
     saveState({ ...newState });
   };
 
+  const createCategory = (newCategoryName) => {
+    const newState = { ...state };
+    newState.categories.push(newCategoryName);
+    saveState({ ...newState });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -52,8 +59,11 @@ function AppProvider({ children }) {
         handleComplete,
         deleteTask,
         createTask,
+        createCategory,
         openTasksModal,
         setOpenTasksModal,
+        openCategoriesModal,
+        setOpenCategoriesModal,
       }}
     >
       {children}
