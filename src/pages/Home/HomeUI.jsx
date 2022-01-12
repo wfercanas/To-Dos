@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { StyledHome, StyledTasksContainer } from "./styles";
 
@@ -10,23 +10,35 @@ import { Search } from "../../components/Search";
 import { TaskCard } from "../../components/TaskCards";
 import { AddTaskButton } from "../../components/Buttons";
 
-const HomeUI = ({
-  categories,
-  tasks,
-  searchValue,
-  setSearchValue,
-  filteredTasks,
-  handleComplete,
-  deleteTask,
-}) => {
+import { AppContext } from "../../context";
+import { CategoriesModal, TasksModal } from "../../components/Modals";
+
+const HomeUI = () => {
+  const {
+    loading,
+    error,
+    state,
+    filteredTasks,
+    handleComplete,
+    deleteTask,
+    openTasksModal,
+    setOpenTasksModal,
+    openCategoriesModal,
+  } = useContext(AppContext);
+
+  const tasks = state.tasks;
+
   return (
     <StyledHome>
       <Navbar />
       <Greeting name="Fernando" />
-      <CategoriesCarousel categories={categories} tasks={tasks} />
+      <CategoriesCarousel />
       <SectionTitle title="Tasks" />
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Search />
       <StyledTasksContainer>
+        {error && <p>Hubo un error cargando las tareas..</p>}
+        {loading && <p>Cargando tareas...</p>}
+        {!loading && !tasks.length && <p>Crea tu primer tarea!</p>}
         {tasks.filter(filteredTasks).map((task) => (
           <TaskCard
             key={task.id}
@@ -38,7 +50,9 @@ const HomeUI = ({
           />
         ))}
       </StyledTasksContainer>
-      <AddTaskButton />
+      <AddTaskButton handleClick={() => setOpenTasksModal(true)} />
+      {openTasksModal && <TasksModal />}
+      {openCategoriesModal && <CategoriesModal />}
     </StyledHome>
   );
 };

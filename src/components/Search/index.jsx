@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../context";
 import { StyledSearch, StyledSearchInput, StyledIcon } from "./styles";
 
-function Search({ searchValue, setSearchValue }) {
+function Search() {
+  const { searchValue, setSearchValue } = useContext(AppContext);
+
   const handleChange = ({ target }) => {
     setSearchValue(target.value);
   };
