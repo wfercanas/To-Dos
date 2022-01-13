@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const StyledCategoryProgressCard = styled.div`
   padding: 1rem;
@@ -55,6 +55,24 @@ const StyledPlusIcon = styled.i`
   text-align: center;
 `;
 
+const loading = keyframes`
+  0% {
+    background-color: var(--n10);
+  }
+  50% {
+    background-color: var(--n40);
+  }
+  100% {
+    background-color: var(--n10);
+  }
+`;
+
+const StyledLoadingCategoryCard = styled(StyledCategoryProgressCard)`
+  transition: background-color 1s ease;
+  animation: ${loading} 3s ease-in infinite;
+  min-height: 64px;
+`;
+
 export {
   StyledCategoryProgressCard,
   StyledTasksCounter,
@@ -62,4 +80,5 @@ export {
   StyledProgressBar,
   StyledCreateCategoryCard,
   StyledPlusIcon,
+  StyledLoadingCategoryCard,
 };

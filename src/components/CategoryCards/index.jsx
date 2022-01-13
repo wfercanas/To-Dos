@@ -7,6 +7,7 @@ import {
   StyledProgressBar,
   StyledCreateCategoryCard,
   StyledPlusIcon,
+  StyledLoadingCategoryCard,
 } from "./styles";
 
 function CategoryProgressCard({ category, tasks }) {
@@ -34,4 +35,8 @@ function CreateCategoryCard() {
   );
 }
 
-export { CategoryProgressCard, CreateCategoryCard };
+function LoadingCategoryCard() {
+  return <StyledLoadingCategoryCard />;
+}
+
+export { CategoryProgressCard, CreateCategoryCard, LoadingCategoryCard };

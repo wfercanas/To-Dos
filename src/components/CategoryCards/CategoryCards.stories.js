@@ -1,9 +1,13 @@
 import React from "react";
-import { CategoryProgressCard, CreateCategoryCard } from ".";
+import {
+  CategoryProgressCard,
+  CreateCategoryCard,
+  LoadingCategoryCard,
+} from ".";
 
 export default {
   title: "Components / Category Cards",
-  component: CategoryProgressCard,
+  component: [CategoryProgressCard, CreateCategoryCard, LoadingCategoryCard],
 };
 
 export const Category = () => (
@@ -27,3 +31,5 @@ export const Category = () => (
 );
 
 export const Create = () => <CreateCategoryCard />;
+
+export const Loading = () => <LoadingCategoryCard />;
