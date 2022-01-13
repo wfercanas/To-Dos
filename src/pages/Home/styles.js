@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const StyledHome = styled.div`
+  max-width: 900px;
+  margin: 32px auto;
+
   & nav {
     margin: 16px;
   }
