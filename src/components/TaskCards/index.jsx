@@ -6,6 +6,7 @@ import {
   StyledCheck,
   StyledTaskTitle,
   StyledDelete,
+  StyledLoadingTaskCard,
 } from "./styles";
 
 function TaskCard({ id, text, completed, handleComplete, deleteTask }) {
@@ -24,4 +25,8 @@ function TaskCard({ id, text, completed, handleComplete, deleteTask }) {
   );
 }
 
-export { TaskCard };
+function LoadingTaskCard() {
+  return <StyledLoadingTaskCard />;
+}
+
+export { TaskCard, LoadingTaskCard };

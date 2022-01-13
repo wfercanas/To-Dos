@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const StyledTaskCard = styled.div`
   display: flex;
@@ -44,10 +44,28 @@ const StyledDelete = styled.i`
   }
 `;
 
+const loading = keyframes`
+  0% {
+    background-color: var(--n10);
+  }
+  50% {
+    background-color: var(--n40);
+  }
+  100% {
+    background-color: var(--n10);
+  }
+`;
+
+const StyledLoadingTaskCard = styled(StyledTaskCard)`
+  transition: background-color 1s ease;
+  animation: ${loading} 3s ease-in infinite;
+`;
+
 export {
   StyledTaskCard,
   StyledTaskDescription,
   StyledCheck,
   StyledTaskTitle,
   StyledDelete,
+  StyledLoadingTaskCard,
 };
