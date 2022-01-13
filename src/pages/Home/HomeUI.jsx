@@ -7,11 +7,12 @@ import { Greeting } from "../../components/Greeting";
 import { Navbar } from "../../components/Navbar";
 import { SectionTitle } from "../../components/Titles";
 import { Search } from "../../components/Search";
-import { TaskCard } from "../../components/TaskCards";
+import { LoadingTaskCard, TaskCard } from "../../components/TaskCards";
 import { AddTaskButton } from "../../components/Buttons";
 
 import { AppContext } from "../../context";
 import { CategoriesModal, TasksModal } from "../../components/Modals";
+import { LoadingCategoryCard } from "../../components/CategoryCards";
 
 const HomeUI = () => {
   const {
@@ -32,12 +33,12 @@ const HomeUI = () => {
     <StyledHome>
       <Navbar />
       <Greeting name="Fernando" />
-      <CategoriesCarousel />
+      {loading ? <LoadingCategoryCard /> : <CategoriesCarousel />}
       <SectionTitle title="Tasks" />
       <Search />
       <StyledTasksContainer>
         {error && <p>Hubo un error cargando las tareas..</p>}
-        {loading && <p>Cargando tareas...</p>}
+        {loading && <LoadingTaskCard />}
         {!loading && !tasks.length && <p>Crea tu primer tarea!</p>}
         {tasks.filter(filteredTasks).map((task) => (
           <TaskCard

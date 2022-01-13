@@ -1,9 +1,9 @@
 import React from "react";
-import { TaskCard } from ".";
+import { LoadingTaskCard, TaskCard } from ".";
 
 export default {
   title: "Components / Task Cards",
-  component: TaskCard,
+  component: [TaskCard, LoadingTaskCard],
 };
 
 export const Pending = () => (
@@ -13,3 +13,5 @@ export const Pending = () => (
 export const Done = () => (
   <TaskCard text="Tomar curso de intro a React" completed={true} />
 );
+
+export const Loading = () => <LoadingTaskCard />;
