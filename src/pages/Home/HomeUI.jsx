@@ -32,7 +32,7 @@ const HomeUI = () => {
   return (
     <StyledHome>
       <Navbar />
-      <Greeting name="Fernando" />
+      <Greeting name="Guest" />
       {loading ? <LoadingCategoryCard /> : <CategoriesCarousel />}
       <SectionTitle title="Tasks" />
       <Search />
