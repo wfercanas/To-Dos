@@ -2,7 +2,7 @@ import React from "react";
 import { CategoriesCarousel } from ".";
 
 export default {
-  title: "Categories Carousel",
+  title: "Components / Categories Carousel",
   component: CategoriesCarousel,
 };
 

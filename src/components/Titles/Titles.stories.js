@@ -1,9 +1,9 @@
-import React from 'react';
-import { SectionTitle } from '.';
+import React from "react";
+import { SectionTitle } from ".";
 
 export default {
-  title: 'Titles',
+  title: "Components / Titles",
   component: SectionTitle,
 };
 
-export const Section = () => <SectionTitle title='Categories' />;
+export const Section = () => <SectionTitle title="Categories" />;

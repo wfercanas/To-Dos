@@ -2,7 +2,7 @@ import React from "react";
 import { CategoryProgressCard, CreateCategoryCard } from ".";
 
 export default {
-  title: "Category Cards",
+  title: "Components / Category Cards",
   component: CategoryProgressCard,
 };
 

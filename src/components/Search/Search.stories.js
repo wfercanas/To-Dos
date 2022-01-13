@@ -1,8 +1,8 @@
-import React from 'react';
-import { Search } from '.';
+import React from "react";
+import { Search } from ".";
 
 export default {
-  title: 'Search',
+  title: "Components / Search",
   component: Search,
 };
 
