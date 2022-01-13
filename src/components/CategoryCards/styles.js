@@ -40,7 +40,7 @@ const StyledProgressBar = styled.div`
 `;
 
 const StyledCreateCategoryCard = styled(StyledCategoryProgressCard)`
-  background-color: var(--n100);
+  background-color: var(--b200);
   cursor: pointer;
 `;
 
