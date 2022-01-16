@@ -51,6 +51,7 @@ const HomeUI = ({
         loading={loading}
         tasks={tasks}
         categories={categories}
+        setOpenCategoriesModal={setOpenCategoriesModal}
         onError={() => <CategoryCardError />}
         onLoading={() => <LoadingCategoryCard />}
         render={(category, index) => (
@@ -66,10 +67,14 @@ const HomeUI = ({
       <TaskCardsList
         error={error}
         loading={loading}
-        tasks={tasks.filter(filteredTasks)}
+        tasks={tasks}
+        filteredTasks={tasks.filter(filteredTasks)}
         onError={() => <TaskError />}
         onLoading={() => <LoadingTaskCard />}
         onEmpty={() => <TaskEmpty />}
+        onEmptySearch={() => (
+          <p>No se encontraron resultados para '{searchValue}'</p>
+        )}
         render={(task) => (
           <TaskCard
             key={task.id}

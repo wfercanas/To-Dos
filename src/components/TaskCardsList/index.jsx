@@ -5,18 +5,21 @@ const TaskCardsList = ({
   error,
   loading,
   tasks,
+  filteredTasks,
   onError,
   onLoading,
   onEmpty,
+  onEmptySearch,
   render,
 }) => {
   return (
-    <>
+    <StyledList>
       {error && onError()}
       {loading && onLoading()}
       {!loading && !tasks.length && onEmpty()}
-      <StyledList>{tasks.map(render)}</StyledList>
-    </>
+      {!loading && !!tasks.length && !filteredTasks.length && onEmptySearch()}
+      {!loading && !!filteredTasks.length && filteredTasks.map(render)}
+    </StyledList>
   );
 };
 
