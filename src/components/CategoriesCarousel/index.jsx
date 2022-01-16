@@ -10,6 +10,7 @@ function CategoriesCarousel({
   categories,
   onError,
   onLoading,
+  setOpenCategoriesModal,
   render,
 }) {
   return (
@@ -18,11 +19,15 @@ function CategoriesCarousel({
       <StyledCarousel>
         {error && onError()}
         {loading && onLoading()}
-        {!loading && !categories.length && <CreateCategoryCard />}
+        {!loading && !categories.length && (
+          <CreateCategoryCard setOpenCategoriesModal={setOpenCategoriesModal} />
+        )}
         {!loading && (
           <>
             {categories.map(render)}
-            <CreateCategoryCard />
+            <CreateCategoryCard
+              setOpenCategoriesModal={setOpenCategoriesModal}
+            />
           </>
         )}
       </StyledCarousel>
