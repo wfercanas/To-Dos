@@ -38,4 +38,13 @@ function LoadingCategoryCard() {
   return <StyledLoadingCategoryCard />;
 }
 
-export { CategoryProgressCard, CreateCategoryCard, LoadingCategoryCard };
+function CategoryCardError() {
+  return <p>Error cargando categorías...</p>;
+}
+
+export {
+  CategoryProgressCard,
+  CreateCategoryCard,
+  LoadingCategoryCard,
+  CategoryCardError,
+};
