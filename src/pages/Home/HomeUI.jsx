@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledHome, StyledTasksContainer } from './styles';
+import { StyledHome } from './styles';
 
 import { CategoriesCarousel } from '../../components/CategoriesCarousel';
 import {
@@ -16,6 +16,7 @@ import { LoadingTaskCard, TaskCard } from '../../components/TaskCards';
 import { AddTaskButton } from '../../components/Buttons';
 
 import { CategoriesModal, TasksModal } from '../../components/Modals';
+import { TaskCardsList } from '../../components/TaskCardsList';
 
 const HomeUI = ({
   loading,
@@ -40,28 +41,23 @@ const HomeUI = ({
     <StyledHome>
       <Navbar />
       <Greeting name='Guest' />
-      {loading ? (
-        <LoadingCategoryCard />
-      ) : (
-        <CategoriesCarousel>
-          {error && <p>Error cargando categorías...</p>}
-          {categories.map((category, index) => (
-            <CategoryProgressCard
-              key={index}
-              category={category}
-              tasks={tasks.filter((task) => task.category === category)}
-            />
-          ))}
-          {!error && (
-            <CreateCategoryCard
-              setOpenCategoriesModal={setOpenCategoriesModal}
-            />
-          )}
-        </CategoriesCarousel>
-      )}
+      <CategoriesCarousel>
+        {error && <p>Error cargando categorías...</p>}
+        {loading && <LoadingCategoryCard />}
+        {categories.map((category, index) => (
+          <CategoryProgressCard
+            key={index}
+            category={category}
+            tasks={tasks.filter((task) => task.category === category)}
+          />
+        ))}
+        {!error && (
+          <CreateCategoryCard setOpenCategoriesModal={setOpenCategoriesModal} />
+        )}
+      </CategoriesCarousel>
       <SectionTitle title='Tasks' />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      <StyledTasksContainer>
+      <TaskCardsList>
         {error && <p>Hubo un error cargando las tareas..</p>}
         {loading && <LoadingTaskCard />}
         {!loading && !tasks.length && <p>Crea tu primer tarea!</p>}
@@ -75,7 +71,7 @@ const HomeUI = ({
             deleteTask={deleteTask}
           />
         ))}
-      </StyledTasksContainer>
+      </TaskCardsList>
       <AddTaskButton handleClick={() => setOpenTasksModal(true)} />
       {openTasksModal && (
         <TasksModal
