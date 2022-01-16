@@ -22,7 +22,7 @@ function CategoriesCarousel({
         {!loading && !categories.length && (
           <CreateCategoryCard setOpenCategoriesModal={setOpenCategoriesModal} />
         )}
-        {!loading && (
+        {!loading && !!categories.length && (
           <>
             {categories.map(render)}
             <CreateCategoryCard
