@@ -18,6 +18,10 @@ const StyledSearchInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  &:disabled {
+    cursor: progress;
+  }
 `;
 
 const StyledIcon = styled.i`

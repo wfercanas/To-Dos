@@ -63,7 +63,11 @@ const HomeUI = ({
         )}
       />
       <SectionTitle title='Tasks' />
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Search
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        loading={loading}
+      />
       <TaskCardsList
         error={error}
         loading={loading}
