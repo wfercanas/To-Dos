@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledHome = styled.div`
   max-width: 900px;
@@ -25,11 +25,4 @@ const StyledHome = styled.div`
   }
 `;
 
-const StyledTasksContainer = styled.div`
-  margin: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-export { StyledHome, StyledTasksContainer };
+export { StyledHome };
