@@ -4,8 +4,8 @@ import { StyledHome } from './styles';
 
 import { CategoriesCarousel } from '../../components/CategoriesCarousel';
 import {
+  CategoryCardError,
   CategoryProgressCard,
-  CreateCategoryCard,
   LoadingCategoryCard,
 } from '../../components/CategoryCards';
 import { Greeting } from '../../components/Greeting';
@@ -46,20 +46,21 @@ const HomeUI = ({
     <StyledHome>
       <Navbar />
       <Greeting name='Guest' />
-      <CategoriesCarousel>
-        {error && <p>Error cargando categorías...</p>}
-        {loading && <LoadingCategoryCard />}
-        {categories.map((category, index) => (
+      <CategoriesCarousel
+        error={error}
+        loading={loading}
+        tasks={tasks}
+        categories={categories}
+        onError={() => <CategoryCardError />}
+        onLoading={() => <LoadingCategoryCard />}
+        render={(category, index) => (
           <CategoryProgressCard
             key={index}
             category={category}
             tasks={tasks.filter((task) => task.category === category)}
           />
-        ))}
-        {!error && (
-          <CreateCategoryCard setOpenCategoriesModal={setOpenCategoriesModal} />
         )}
-      </CategoriesCarousel>
+      />
       <SectionTitle title='Tasks' />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <TaskCardsList
