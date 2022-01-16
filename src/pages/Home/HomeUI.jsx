@@ -62,11 +62,14 @@ const HomeUI = ({
       </CategoriesCarousel>
       <SectionTitle title='Tasks' />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TaskCardsList>
-        {error && <TaskError />}
-        {loading && <LoadingTaskCard />}
-        {!loading && !tasks.length && <TaskEmpty />}
-        {tasks.filter(filteredTasks).map((task) => (
+      <TaskCardsList
+        error={error}
+        loading={loading}
+        tasks={tasks.filter(filteredTasks)}
+        onError={() => <TaskError />}
+        onLoading={() => <LoadingTaskCard />}
+        onEmpty={() => <TaskEmpty />}
+        render={(task) => (
           <TaskCard
             key={task.id}
             id={task.id}
@@ -75,8 +78,8 @@ const HomeUI = ({
             handleComplete={handleComplete}
             deleteTask={deleteTask}
           />
-        ))}
-      </TaskCardsList>
+        )}
+      />
       <AddTaskButton handleClick={() => setOpenTasksModal(true)} />
       {openTasksModal && (
         <TasksModal

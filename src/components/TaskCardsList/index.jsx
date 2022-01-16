@@ -1,8 +1,23 @@
 import React from 'react';
 import { StyledList } from './styles';
 
-const TaskCardsList = ({ children }) => {
-  return <StyledList>{children}</StyledList>;
+const TaskCardsList = ({
+  error,
+  loading,
+  tasks,
+  onError,
+  onLoading,
+  onEmpty,
+  render,
+}) => {
+  return (
+    <>
+      {error && onError()}
+      {loading && onLoading()}
+      {!loading && !tasks.length && onEmpty()}
+      <StyledList>{tasks.map(render)}</StyledList>
+    </>
+  );
 };
 
 export { TaskCardsList };
