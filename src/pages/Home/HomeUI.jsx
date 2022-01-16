@@ -83,7 +83,18 @@ const HomeUI = ({
             deleteTask={deleteTask}
           />
         )}
-      />
+      >
+        {(task) => (
+          <TaskCard
+            key={task.id}
+            id={task.id}
+            text={task.text}
+            completed={task.completed}
+            handleComplete={handleComplete}
+            deleteTask={deleteTask}
+          />
+        )}
+      </TaskCardsList>
       <AddTaskButton handleClick={() => setOpenTasksModal(true)} />
       {openTasksModal && (
         <TasksModal

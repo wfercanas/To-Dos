@@ -12,6 +12,7 @@ function CategoriesCarousel({
   onLoading,
   setOpenCategoriesModal,
   render,
+  children,
 }) {
   return (
     <StyledCategoriesCarousel>
@@ -24,7 +25,7 @@ function CategoriesCarousel({
         )}
         {!loading && !!categories.length && (
           <>
-            {categories.map(render)}
+            {categories.map(render || children)}
             <CreateCategoryCard
               setOpenCategoriesModal={setOpenCategoriesModal}
             />

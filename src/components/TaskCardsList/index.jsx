@@ -11,6 +11,7 @@ const TaskCardsList = ({
   onEmpty,
   onEmptySearch,
   render,
+  children,
 }) => {
   return (
     <StyledList>
@@ -18,7 +19,9 @@ const TaskCardsList = ({
       {loading && onLoading()}
       {!loading && !tasks.length && onEmpty()}
       {!loading && !!tasks.length && !filteredTasks.length && onEmptySearch()}
-      {!loading && !!filteredTasks.length && filteredTasks.map(render)}
+      {!loading &&
+        !!filteredTasks.length &&
+        filteredTasks.map(render || children)}
     </StyledList>
   );
 };
