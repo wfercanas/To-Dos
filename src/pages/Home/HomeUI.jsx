@@ -11,7 +11,7 @@ import {
 import { Greeting } from '../../components/Greeting';
 import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/Titles';
-import { Search } from '../../components/Search';
+import { EmptySearchMessage, Search } from '../../components/Search';
 import {
   LoadingTaskCard,
   TaskCard,
@@ -72,9 +72,7 @@ const HomeUI = ({
         onError={() => <TaskError />}
         onLoading={() => <LoadingTaskCard />}
         onEmpty={() => <TaskEmpty />}
-        onEmptySearch={() => (
-          <p>No se encontraron resultados para '{searchValue}'</p>
-        )}
+        onEmptySearch={() => <EmptySearchMessage searchText={searchValue} />}
         render={(task) => (
           <TaskCard
             key={task.id}

@@ -18,4 +18,8 @@ function Search({ searchValue, setSearchValue }) {
   );
 }
 
-export { Search };
+function EmptySearchMessage({ searchText }) {
+  return <p>No se encontraron resultados para '{searchText}'</p>;
+}
+
+export { Search, EmptySearchMessage };
