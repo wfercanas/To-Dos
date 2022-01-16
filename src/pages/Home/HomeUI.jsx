@@ -12,7 +12,12 @@ import { Greeting } from '../../components/Greeting';
 import { Navbar } from '../../components/Navbar';
 import { SectionTitle } from '../../components/Titles';
 import { Search } from '../../components/Search';
-import { LoadingTaskCard, TaskCard } from '../../components/TaskCards';
+import {
+  LoadingTaskCard,
+  TaskCard,
+  TaskEmpty,
+  TaskError,
+} from '../../components/TaskCards';
 import { AddTaskButton } from '../../components/Buttons';
 
 import { CategoriesModal, TasksModal } from '../../components/Modals';
@@ -58,9 +63,9 @@ const HomeUI = ({
       <SectionTitle title='Tasks' />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <TaskCardsList>
-        {error && <p>Hubo un error cargando las tareas..</p>}
+        {error && <TaskError />}
         {loading && <LoadingTaskCard />}
-        {!loading && !tasks.length && <p>Crea tu primer tarea!</p>}
+        {!loading && !tasks.length && <TaskEmpty />}
         {tasks.filter(filteredTasks).map((task) => (
           <TaskCard
             key={task.id}

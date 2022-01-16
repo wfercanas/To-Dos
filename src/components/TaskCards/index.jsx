@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   StyledTaskCard,
@@ -7,20 +7,20 @@ import {
   StyledTaskTitle,
   StyledDelete,
   StyledLoadingTaskCard,
-} from "./styles";
+} from './styles';
 
 function TaskCard({ id, text, completed, handleComplete, deleteTask }) {
   return (
     <StyledTaskCard>
       <StyledTaskDescription>
         <StyledCheck
-          className={completed ? "ci-checkbox_square" : "ci-checkbox"}
+          className={completed ? 'ci-checkbox_square' : 'ci-checkbox'}
           completed={completed}
           onClick={() => handleComplete(id)}
         />
         <StyledTaskTitle completed={completed}>{text}</StyledTaskTitle>
       </StyledTaskDescription>
-      <StyledDelete className="ci-trash_full" onClick={() => deleteTask(id)} />
+      <StyledDelete className='ci-trash_full' onClick={() => deleteTask(id)} />
     </StyledTaskCard>
   );
 }
@@ -29,4 +29,12 @@ function LoadingTaskCard() {
   return <StyledLoadingTaskCard />;
 }
 
-export { TaskCard, LoadingTaskCard };
+function TaskError() {
+  return <p>Hubo un error cargando las tareas..</p>;
+}
+
+function TaskEmpty() {
+  return <p>¡Crea tu primer tarea!</p>;
+}
+
+export { TaskCard, LoadingTaskCard, TaskError, TaskEmpty };
