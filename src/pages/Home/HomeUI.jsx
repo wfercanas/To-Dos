@@ -45,7 +45,6 @@ const HomeUI = ({
       ) : (
         <CategoriesCarousel>
           {error && <p>Error cargando categorías...</p>}
-          {loading && <p>Cargando categorias...</p>}
           {categories.map((category, index) => (
             <CategoryProgressCard
               key={index}
@@ -53,7 +52,7 @@ const HomeUI = ({
               tasks={tasks.filter((task) => task.category === category)}
             />
           ))}
-          {!loading && !error && (
+          {!error && (
             <CreateCategoryCard
               setOpenCategoriesModal={setOpenCategoriesModal}
             />
