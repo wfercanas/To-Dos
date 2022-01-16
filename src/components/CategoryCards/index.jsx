@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../context";
+import React from 'react';
+
 import {
   StyledCategoryProgressCard,
   StyledTasksCounter,
@@ -8,7 +8,7 @@ import {
   StyledCreateCategoryCard,
   StyledPlusIcon,
   StyledLoadingCategoryCard,
-} from "./styles";
+} from './styles';
 
 function CategoryProgressCard({ category, tasks }) {
   function calcProgress(tasks) {
@@ -26,11 +26,10 @@ function CategoryProgressCard({ category, tasks }) {
   );
 }
 
-function CreateCategoryCard() {
-  const { setOpenCategoriesModal } = useContext(AppContext);
+function CreateCategoryCard({ setOpenCategoriesModal }) {
   return (
     <StyledCreateCategoryCard onClick={() => setOpenCategoriesModal(true)}>
-      <StyledPlusIcon className="ci-plus_circle" />
+      <StyledPlusIcon className='ci-plus_circle' />
     </StyledCreateCategoryCard>
   );
 }

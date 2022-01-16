@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
-import { AppContext } from "../../context";
-import { CategoriesModalUI } from "./CategoryModalUI";
-import { TaskModalUI } from "./TaskModalUI";
+import { CategoriesModalUI } from './CategoryModalUI';
+import { TaskModalUI } from './TaskModalUI';
 
-const TasksModal = () => {
-  const [newTaskName, setNewTaskName] = useState("");
-  const [newTaskCategory, setNewTaskCategory] = useState("");
-  const { state, createTask, setOpenTasksModal } = useContext(AppContext);
+const TasksModal = ({ state, createTask, setOpenTasksModal }) => {
+  const [newTaskName, setNewTaskName] = useState('');
+  const [newTaskCategory, setNewTaskCategory] = useState('');
 
   const handleTaskNameChange = ({ target }) => {
     setNewTaskName(target.value);
@@ -34,14 +32,12 @@ const TasksModal = () => {
       handleTaskCategoryChange={handleTaskCategoryChange}
       handleSubmit={handleSubmit}
     />,
-    document.getElementById("modal")
+    document.getElementById('modal')
   );
 };
 
-const CategoriesModal = () => {
-  const { state, createCategory, setOpenCategoriesModal } =
-    useContext(AppContext);
-  const [newCategoryName, setNewCategoryName] = useState("");
+const CategoriesModal = ({ state, createCategory, setOpenCategoriesModal }) => {
+  const [newCategoryName, setNewCategoryName] = useState('');
 
   const handleCategoryNameChange = ({ target }) => {
     setNewCategoryName(target.value);
@@ -62,7 +58,7 @@ const CategoriesModal = () => {
       handleCategoryNameChange={handleCategoryNameChange}
       handleSubmit={handleSubmit}
     />,
-    document.getElementById("modal")
+    document.getElementById('modal')
   );
 };
 

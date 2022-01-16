@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../context";
-import { StyledSearch, StyledSearchInput, StyledIcon } from "./styles";
+import React from 'react';
+import { StyledSearch, StyledSearchInput, StyledIcon } from './styles';
 
-function Search() {
-  const { searchValue, setSearchValue } = useContext(AppContext);
-
+function Search({ searchValue, setSearchValue }) {
   const handleChange = ({ target }) => {
     setSearchValue(target.value);
   };
@@ -13,10 +10,10 @@ function Search() {
     <StyledSearch>
       <StyledSearchInput
         value={searchValue}
-        placeholder="Search"
+        placeholder='Search'
         onChange={handleChange}
       />
-      <StyledIcon className="ci-search" />
+      <StyledIcon className='ci-search' />
     </StyledSearch>
   );
 }
