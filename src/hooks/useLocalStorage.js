@@ -7,25 +7,26 @@ function useLocalStorage(itemName, initialValue = '') {
   const [sync, setSync] = useState(true);
 
   useEffect(() => {
-    if (!loading) {
-      setLoading(true);
-    }
+    if (sync) {
+      if (!loading) {
+        setLoading(true);
+      }
+      try {
+        setTimeout(() => {
+          const localStorageItem = localStorage.getItem(itemName);
 
-    try {
-      setTimeout(() => {
-        const localStorageItem = localStorage.getItem(itemName);
+          if (!localStorageItem) {
+            localStorage.setItem(itemName, JSON.stringify(initialValue));
+          } else {
+            setItem(JSON.parse(localStorageItem));
+          }
 
-        if (!localStorageItem) {
-          localStorage.setItem(itemName, JSON.stringify(initialValue));
-        } else {
-          setItem(JSON.parse(localStorageItem));
-        }
-
+          setLoading(false);
+        }, 4000);
+      } catch (err) {
         setLoading(false);
-      }, 4000);
-    } catch (err) {
-      setLoading(false);
-      setError(err);
+        setError(err);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sync]);
