@@ -8,7 +8,7 @@ const StyledNavbar = styled.nav`
 const StyledIcon = styled.i`
   cursor: pointer;
   transition: color 500ms ease-out;
-  color: ${({ updates }) => (!updates ? 'var(--n100)' : 'var(--r400)')};
+  color: ${({ updates }) => (!!updates ? 'var(--r400)' : 'var(--n100)')};
   font-size: 1.3rem;
 
   :hover {
