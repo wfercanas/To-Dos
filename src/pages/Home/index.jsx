@@ -21,6 +21,9 @@ const Home = () => {
     task.text.toLowerCase().includes(searchValue.toLowerCase());
 
   const handleComplete = (id) => {
+    if (!sync) {
+      return alert('The app has some updates pending. Please reload first');
+    }
     const stateTasks = [...state.tasks];
     const taskIndex = stateTasks.findIndex((task) => task.id === id);
     stateTasks[taskIndex].completed = !stateTasks[taskIndex].completed;
@@ -28,11 +31,17 @@ const Home = () => {
   };
 
   const deleteTask = (id) => {
+    if (!sync) {
+      return alert('The app has some updates pending. Please reload first');
+    }
     let stateTasks = state.tasks.filter((task) => task.id !== id);
     saveState({ ...state, tasks: stateTasks });
   };
 
   const createTask = ({ newTaskName, newTaskCategory }) => {
+    if (!sync) {
+      return alert('The app has some updates pending. Please reload first');
+    }
     const newState = { ...state };
     newState.tasks.push({
       id: new Date().getTime(),
@@ -44,6 +53,9 @@ const Home = () => {
   };
 
   const createCategory = (newCategoryName) => {
+    if (!sync) {
+      return alert('The app has some updates pending. Please reload first');
+    }
     const newState = { ...state };
     newState.categories.push(newCategoryName);
     saveState({ ...newState });
