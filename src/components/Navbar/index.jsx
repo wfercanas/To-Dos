@@ -7,15 +7,11 @@ function NavbarWithoutListener({ updates, toggleUpdates }) {
   return (
     <StyledNavbar>
       <StyledIcon className='ci-menu_duo' />
-      {!updates ? (
-        <StyledIcon className='ci-notification_outline' updates={updates} />
-      ) : (
-        <StyledIcon
-          className='ci-notification_outline_dot'
-          updates={updates}
-          onClick={toggleUpdates}
-        />
-      )}
+      <StyledIcon
+        className='ci-refresh_02'
+        updates={updates}
+        onClick={toggleUpdates}
+      />
     </StyledNavbar>
   );
 }
