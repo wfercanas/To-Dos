@@ -7,12 +7,15 @@ const WithStorageListener = (WrappedComponent) => {
     window.addEventListener('storage', (event) => {
       if (event.key === 'STATE_v1') {
         setUpdates(true);
+        setSync(false);
       }
     });
 
     const toggleUpdates = () => {
-      setUpdates(!updates);
-      setSync(!sync);
+      if (updates) {
+        setUpdates(false);
+        setSync(true);
+      }
     };
 
     return <WrappedComponent updates={updates} toggleUpdates={toggleUpdates} />;
