@@ -9,6 +9,8 @@ const Home = () => {
     saveItem: saveState,
     loading,
     error,
+    sync,
+    setSync,
   } = useLocalStorage('STATE_v1', { categories: [], tasks: [] });
 
   const [searchValue, setSearchValue] = useState('');
@@ -52,6 +54,8 @@ const Home = () => {
       loading={loading}
       error={error}
       state={state}
+      sync={sync}
+      setSync={setSync}
       searchValue={searchValue}
       setSearchValue={setSearchValue}
       filteredTasks={filteredTasks}

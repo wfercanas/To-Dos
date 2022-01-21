@@ -27,6 +27,8 @@ const HomeUI = ({
   loading,
   error,
   state,
+  sync,
+  setSync,
   searchValue,
   setSearchValue,
   filteredTasks,
@@ -44,7 +46,7 @@ const HomeUI = ({
 
   return (
     <StyledHome>
-      <Navbar />
+      <Navbar sync={sync} setSync={setSync} />
       <Greeting name='Guest' />
       <CategoriesCarousel
         error={error}
