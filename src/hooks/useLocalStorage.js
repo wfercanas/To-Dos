@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-function useLocalStorage(itemName, initialValue = "") {
+function useLocalStorage(itemName, initialValue = '') {
   const [item, setItem] = useState(initialValue);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(undefined);
@@ -22,7 +22,7 @@ function useLocalStorage(itemName, initialValue = "") {
       setLoading(false);
       setError(err);
     }
-  }, [item, itemName, initialValue]);
+  }, []);
 
   const saveItem = (newItem) => {
     const stringifiedItem = JSON.stringify(newItem);
