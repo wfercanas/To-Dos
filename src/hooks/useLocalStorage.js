@@ -1,10 +1,52 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_ITEM':
+      return {
+        ...state,
+        item: action.payload,
+      };
+    case 'SET_LOADING':
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case 'SET_SYNC':
+      return {
+        ...state,
+        sync: action.payload,
+      };
+    default:
+      return { ...state };
+  }
+};
 
 function useLocalStorage(itemName, initialValue = '') {
-  const [item, setItem] = useState(initialValue);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(undefined);
-  const [sync, setSync] = useState(true);
+  const initialState = {
+    item: initialValue,
+    loading: true,
+    error: undefined,
+    sync: true,
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const setLoading = (newValue) =>
+    dispatch({ type: 'SET_LOADING', payload: newValue });
+  const setSync = (newValue) =>
+    dispatch({ type: 'SET_SYNC', payload: newValue });
+  const setItem = (newValue) =>
+    dispatch({ type: 'SET_ITEM', payload: newValue });
+  const setError = (newValue) =>
+    dispatch({ type: 'SET_ERROR', payload: newValue });
+
+  const { item, loading, error, sync } = state;
 
   useEffect(() => {
     if (sync) {
