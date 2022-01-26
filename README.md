@@ -10,6 +10,8 @@
 
 This app provides the user the use case of controlling all the tasks he/she may have pending to complete. The app group tasks by category so the user can check how many tasks are created per category and see in a progress bar how much is left until the category is complete.
 
+In this repository, you will find 3 branches. The context branch, to solve the exercise using the useContext Hook; the composition branch, where I apply composition and render props to stop using Context; and the main branch, where I apply useReducer to the useLocalStorage Custom Hook.
+
 ## Installation
 
 In order to make a local isntallation, you should execute:
